@@ -1,0 +1,9 @@
+{
+    "images": [
+        { "image": "images/wizard101pic.jpg" },
+        { "image": "images/cs2pic.jpg" },
+        { "image": "images/rocketleaguepic.jpg" },
+        { "image": "images/valheimpic.jpg" },
+        { "image": "images/hollowknightpic.jpg" }
+    ]
+}

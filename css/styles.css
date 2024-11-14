@@ -1,0 +1,273 @@
+/* Validator said this was needed to standardize boxes across web browsers */
+* {
+    margin: auto;
+    padding: 0;
+}
+
+/* Styling for the general body of my main page and all pages using body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: #00d9ff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Heading alignment and shadow glow */
+h1, h2 {
+    text-align: center;
+    text-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff, 0 0 60px #00d9ff;
+}
+
+/* Sub-distinction to make main header bigger */
+header h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+/* Main header styling for big section */
+header {
+    background-color: #000000;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 50px #00d9ff;
+}
+
+/* Navigation positioning */
+nav {
+    text-align: center;
+}
+
+/* Navigation bars list properties for perceived buttons */
+nav ul {
+    list-style-type: none;
+    display: inline-flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+/* Navagation list ITEMS style */
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #000000;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff;
+}
+
+/* Animation for hover of said list buttons */
+nav ul li a:hover {
+    background-color: #00d9ff;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #00d9ff, 0 0 100px #00d9ff;
+}
+
+/* Extra accessibility for highlight to show which page you're on (extra points please Nina) */
+
+.active {
+    background-color: #02bbdc;
+    color: white;
+    
+}
+
+
+/* About Me container styling */
+.about-me {
+    max-width: 900px;
+    margin: 0 auto;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+    padding: 50px;
+    background-color: transparent;
+    display: flex;
+    gap: 20px;
+}
+
+/* Profile pic force sizing */
+#profile-pic {
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Seperate css for text width of section*/
+.about-text {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center; 
+}
+
+/* Buttons for cv download inspired by og portfolio */
+.download-cv-btn {
+    background: linear-gradient(to right, #ffafbd, #ffc3a0);
+    width: 500px;
+    max-width: 450px;
+    position: absolute;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Different button link with similar attributes used as .game_types keeps hijacking centering format */
+
+.button-link {
+    display: inline-block;
+    background: linear-gradient(to right, #04cdf0, #000000);
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Gaming Skills Portfolio/button centering and text */
+.game_types {
+    background-color: #222;
+    border: 2px solid #00d9ff;
+    padding: 40px;
+    border-radius: 20px;
+    width: calc(50% - 40px);
+    transition: transform 0.5s ease-in-out, box-shadow 0.4s;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+/* extra code to keep it flexible even though all images are same size */
+.game_types img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Skins grid to make it look better */
+#skins-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    position: absolute;
+}
+
+/* Favorite skins image dimensions/crop */
+.skin_image {
+    width: 460px;
+    height: 215px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* General section styling for condensed list for skins page */
+section {
+    margin: 20px;
+    padding: 20px;
+    text-align: left;
+}
+
+/* General contact form css */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #222;
+    padding: 50px;
+    border-radius: 10px;
+    box-sizing: border-box; /* added to make even on both sides */
+}
+
+#contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+    box-sizing: border-box; /* added to make it even on both sides */
+}
+
+#contact-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00d9ff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#contact-form button:hover {
+    background-color: #0099cc;
+}
+
+/* Footer bar for socials and my own portfolio */
+
+.footer-bar {
+    position: relative;
+    width: 100%;
+    background-color: #00d9ffe6;
+    padding: 10px 0;
+    text-align: center;
+}
+.footer-bar a {
+    margin: 0 15px;
+    text-decoration: none; /* Had an issue with link line appearing */
+    display: inline-block;
+}
+
+/* Because of imported custom, need to make sure it is resized uniformly */
+.footer-bar img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Carousel CSS to make it look like an actual round about */
+
+#carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+    margin: auto;
+    position: relative;
+}
+
+
+#image-display img {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+    /* ^^Ensures the entire image is visible, maintaining aspect ratio */
+}
+
+
+#prev,
+#next {
+    top: 50%;
+    width: 70px;
+    transform: translateY(-50%);
+    /*^ ensures they are positioned halway down*/
+    padding: 5px;
+    cursor: pointer;
+    /*^ changes the cursor when hovering over the buttons to show they are interactable*/
+}
+
+
+
