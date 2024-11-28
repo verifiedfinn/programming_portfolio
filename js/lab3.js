@@ -50,12 +50,14 @@ $(document).ready(function () {
     // Function to append new content to the display container
     function appendNewContent(project, displayContainer) {
         const contentHTML = `
-            <div class="carousel-item" style="display: none;">
+            <div class="carousel-item">
                 <h2><a href="${project.url}" target="_blank">${project.title}</a></h2>
                 <ul>
                     ${project.description.map((item) => `<li>${item}</li>`).join("")}
                 </ul>
-                <img src="${project.images.src}" alt="${project.images.alt}" class="skin_image">
+                <div class="project_image_container">
+                    <img src="${project.images.src}" alt="${project.images.alt}" class="skin_image">
+                </div>
             </div>
         `;
         displayContainer.append(contentHTML); // Add the new content
