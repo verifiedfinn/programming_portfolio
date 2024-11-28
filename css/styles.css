@@ -269,5 +269,187 @@ section {
     /*^ changes the cursor when hovering over the buttons to show they are interactable*/
 }
 
+/* Body and Main Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: #00d9ff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+/* Heading Styling */
+h1, h2 {
+    text-align: center;
+    text-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff, 0 0 60px #00d9ff;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #000;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #00d9ff;
+}
+
+nav ul li a:hover {
+    background-color: #00d9ff;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #00d9ff, 0 0 100px #00d9ff;
+}
+
+.active {
+    background-color: #02bbdc;
+}
+
+/* Responsive Containers */
+.about-me {
+    max-width: 900px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#profile-pic {
+    flex: 1;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+/* Contact Form */
+#contact-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+/* Footer */
+.footer-bar {
+    width: 100%;
+    background-color: #00d9ffe6;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-bar img {
+    width: 30px;
+    height: 30px;
+}
+
+#carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1000px; /* Increased max-width for better spacing */
+    width: 90%; /* Ensure responsiveness */
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Image Display Area */
+#image-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px; /* Limit the width of the content */
+    width: 100%;
+    margin: 0 auto; /* Center content */
+    transition: opacity 0.5s ease-in-out;
+}
+
+#image-display h2 a {
+    color: #00d9ff;
+    text-decoration: none;
+    text-shadow: 0 0 20px #00d9ff;
+    font-size: 1.8rem; /* Slightly larger for better readability */
+    margin-bottom: 10px;
+}
+
+#image-display ul {
+    list-style-type: disc;
+    text-align: left;
+    padding: 10px 20px;
+    margin-top: 10px;
+    max-width: 600px; /* Limit width of the bullet points */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#image-display ul li {
+    margin-bottom: 10px;
+    color: #00d9ff;
+    line-height: 1.6; /* Add line height for better spacing */
+}
+
+/* Images styling inside the display */
+#image-display img {
+    max-width: 100%; /* Ensure the image fits the container */
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    border: none; /* Remove any border from the carousel content */
+    padding: 0; /* Reset any inherited padding */
+    margin: 0; /* Reset any inherited margin */
+    width: 100%; /* Ensure full width */
+}
+
+.game_types > #image-display {
+    border: none !important;
+}
+
+
+/* Responsive Media Queries */
+@media screen and (max-width: 1200px) {
+    .about-me {
+        flex-direction: column;
+        text-align: center;
+    }
+    #profile-pic {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin-bottom: 10px;
+    }
+    #contact-form {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    .about-me {
+        padding: 10px;
+    }
+    nav ul li a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
 
 
