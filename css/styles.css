@@ -353,7 +353,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     max-width: 1000px; /* Increased max-width for better spacing */
     width: 90%; /* Ensure responsiveness */
     margin: 20px auto;

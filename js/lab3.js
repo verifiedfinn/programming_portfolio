@@ -98,6 +98,31 @@ $(document).ready(function () {
         console.log("Previous Index:", currentIndex); // Debug
         updateContent(data);
     });
+
+    $("#prev,#next").hover(function() {
+        $(this).css("background-color", "green");
+    },
+    function() {
+        $(this).css("background-color", "red");
+    });
+
+    $("#prev","#next").on({
+        mouseenter: function() {
+            $(this).css("background-color", "green");
+        },
+        mouseleave: function() {
+            $(this).css("background-color", "red");
+        },
+        click: function() {
+            $(this).css("background-color", "orange");
+        }
+        
+    });
+
+    $("#sliderbutton").click(function() {
+        $("#slidercontent").slideToggle("fast");
+    });
+
 });
 
 
