@@ -424,6 +424,10 @@ nav ul li a:hover {
     width: 650px;
     height: 339px;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    object-fit: contain;
+    /* ^^Ensures the entire image is visible, maintaining aspect ratio */
 }
 
 /* Slider CSS */

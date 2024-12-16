@@ -28,22 +28,22 @@ $(document).ready(function () {
 
     // Update carousel content with fade animation
     function updateContent(data) {
-        console.log(currentIndex, data)
+        console.log(currentIndex, data);
         const project = data[currentIndex]; // Get the current project
         const displayContainer = $("#image-display");
         const existingContent = displayContainer.find(".carousel-item");
 
         if (existingContent.length > 0) {
-            // Fade out existing content
+            // Fade out existing content before updating
             existingContent.fadeOut("slow", function () {
                 displayContainer.empty(); // Remove old content
                 appendNewContent(project, displayContainer); // Add new content
-                displayContainer.children().fadeIn("slow"); // Fade in new content
+                displayContainer.children().hide().fadeIn("slow"); // Fade in new content
             });
         } else {
-            // No content yet, just add and fade in
+            // If no content exists, just add and fade in
             appendNewContent(project, displayContainer);
-            displayContainer.children().fadeIn("slow");
+            displayContainer.children().hide().fadeIn("slow");
         }
     }
 
@@ -80,51 +80,35 @@ $(document).ready(function () {
     // Next button functionality
     $("#next").on("click", function () {
         stopAutoFade(); // Stop auto-fading when manual interaction occurs
-        if (currentIndex < data.length - 1) {
-            currentIndex++;
-        } else {
-            currentIndex = 0; // Loop back to the first slide
-        }
-        console.log("Next Index:", currentIndex); // Debug
+        currentIndex = (currentIndex + 1) % data.length; // Loop back to the first slide
         updateContent(data);
     });
 
     // Previous button functionality
     $("#prev").on("click", function () {
         stopAutoFade(); // Stop auto-fading when manual interaction occurs
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            currentIndex = data.length - 1; // Loop back to the last slide
-        }
-        console.log("Previous Index:", currentIndex); // Debug
+        currentIndex = (currentIndex - 1 + data.length) % data.length; // Loop back to the last slide
         updateContent(data);
     });
 
-    $("#prev,#next").hover(function() {
-        $(this).css("background-color", "green");
-    },
-    function() {
-        $(this).css("background-color", "red");
-    });
-
-    $("#prev","#next").on({
-        mouseenter: function() {
+    // Hover and click effects for buttons
+    $("#prev, #next").hover(
+        function () {
             $(this).css("background-color", "green");
         },
-        mouseleave: function() {
+        function () {
             $(this).css("background-color", "red");
-        },
-        click: function() {
-            $(this).css("background-color", "orange");
         }
-        
+    );
+
+    $("#prev, #next").on("click", function () {
+        $(this).css("background-color", "orange");
     });
 
-    $("#sliderbutton").click(function() {
+    // Toggle slider content visibility
+    $("#sliderbutton").click(function () {
         $("#slidercontent").slideToggle("fast");
     });
-
 });
 
 
