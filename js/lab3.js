@@ -28,17 +28,20 @@ $(document).ready(function () {
 
     // Update carousel content with fade animation
     function updateContent(data) {
-        console.log(currentIndex, data);
         const project = data[currentIndex]; // Get the current project
         const displayContainer = $("#image-display");
         const existingContent = displayContainer.find(".carousel-item");
 
-        // Fade out old content and fade in new
-        displayContainer.stop(true, true).fadeOut(300, function () {
-            displayContainer.empty(); // Remove old content
-            appendNewContent(project, displayContainer); // Add new content
-            displayContainer.fadeIn(300); // Fade in new content
-        });
+        if (existingContent.length > 0) {
+            existingContent.fadeOut(300, function () {
+                displayContainer.empty();
+                appendNewContent(project, displayContainer);
+                displayContainer.children().hide().fadeIn(300);
+            });
+        } else {
+            appendNewContent(project, displayContainer);
+            displayContainer.children().hide().fadeIn(300);
+        }
     }
 
     // Function to append new content to the display container
@@ -54,34 +57,34 @@ $(document).ready(function () {
                 </div>
             </div>
         `;
-        displayContainer.append(contentHTML); // Add the new content
+        displayContainer.append(contentHTML);
     }
 
     // Start auto-fading
     function startAutoFade(data) {
         autoFadeInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % data.length; // Move to the next slide
+            currentIndex = (currentIndex + 1) % data.length;
             updateContent(data);
-        }, 10000); // Every 10 seconds
+        }, 10000);
     }
 
     // Stop auto-fading
     function stopAutoFade() {
         clearInterval(autoFadeInterval);
-        console.log("Auto-fade stopped."); // Debug
+        console.log("Auto-fade stopped.");
     }
 
     // Next button functionality
     $("#next").on("click", function () {
-        stopAutoFade(); // Stop auto-fading when manual interaction occurs
-        currentIndex = (currentIndex + 1) % data.length; // Loop back to the first slide
+        stopAutoFade();
+        currentIndex = (currentIndex + 1) % data.length;
         updateContent(data);
     });
 
     // Previous button functionality
     $("#prev").on("click", function () {
-        stopAutoFade(); // Stop auto-fading when manual interaction occurs
-        currentIndex = (currentIndex - 1 + data.length) % data.length; // Loop back to the last slide
+        stopAutoFade();
+        currentIndex = (currentIndex - 1 + data.length) % data.length;
         updateContent(data);
     });
 
@@ -98,19 +101,24 @@ $(document).ready(function () {
         }
     });
 
+    // Pre-render slider content to prevent lag
+    $("#slidercontent").hide(); // Start hidden but already rendered in the DOM
+
     // Smooth dropdown functionality for the slider button
     $("#sliderbutton").click(function () {
         const content = $("#slidercontent");
 
+        // Prevent animation interruptions
+        content.stop(true, false);
+
         if (content.is(":visible")) {
-            content.stop(true, true).slideUp(400); // Smoothly hide content
+            content.slideUp(400, "swing");
         } else {
-            content.stop(true, true).slideDown(400).promise().done(function () {
-                // Smooth scroll to dropdown content
-                $("html, body").stop(true, true).animate(
+            content.slideDown(400, "swing", function () {
+                $("html, body").animate(
                     { scrollTop: content.offset().top },
-                    600, // Increased timing for smoothness
-                    "swing" // Natural easing
+                    400,
+                    "swing"
                 );
             });
         }
