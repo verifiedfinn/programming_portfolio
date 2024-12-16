@@ -33,18 +33,12 @@ $(document).ready(function () {
         const displayContainer = $("#image-display");
         const existingContent = displayContainer.find(".carousel-item");
 
-        if (existingContent.length > 0) {
-            // Fade out existing content before updating
-            existingContent.fadeOut("slow", function () {
-                displayContainer.empty(); // Remove old content
-                appendNewContent(project, displayContainer); // Add new content
-                displayContainer.children().hide().fadeIn("slow"); // Fade in new content
-            });
-        } else {
-            // If no content exists, just add and fade in
-            appendNewContent(project, displayContainer);
-            displayContainer.children().hide().fadeIn("slow");
-        }
+        // Fade out old content and fade in new
+        displayContainer.stop(true, true).fadeOut(300, function () {
+            displayContainer.empty(); // Remove old content
+            appendNewContent(project, displayContainer); // Add new content
+            displayContainer.fadeIn(300); // Fade in new content
+        });
     }
 
     // Function to append new content to the display container
@@ -91,22 +85,34 @@ $(document).ready(function () {
         updateContent(data);
     });
 
-    // Hover and click effects for buttons
-    $("#prev, #next").hover(
-        function () {
+    // Unified hover and click effects for navigation buttons
+    $("#prev, #next").on({
+        mouseenter: function () {
             $(this).css("background-color", "green");
         },
-        function () {
+        mouseleave: function () {
             $(this).css("background-color", "red");
+        },
+        click: function () {
+            $(this).css("background-color", "orange");
         }
-    );
-
-    $("#prev, #next").on("click", function () {
-        $(this).css("background-color", "orange");
     });
 
-    // Toggle slider content visibility
+    // Smooth dropdown functionality for the slider button
     $("#sliderbutton").click(function () {
-        $("#slidercontent").slideToggle("fast");
+        const content = $("#slidercontent");
+
+        if (content.is(":visible")) {
+            content.stop(true, true).slideUp(400); // Smoothly hide content
+        } else {
+            content.stop(true, true).slideDown(400).promise().done(function () {
+                // Smooth scroll to dropdown content
+                $("html, body").stop(true, true).animate(
+                    { scrollTop: content.offset().top },
+                    600, // Increased timing for smoothness
+                    "swing" // Natural easing
+                );
+            });
+        }
     });
 });

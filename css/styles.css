@@ -366,7 +366,7 @@ nav ul li a:hover {
     flex-direction: row;
     align-items: center;
     background-color: #222;
-    padding: 20px;
+    padding-top: 5px;
     border-radius: 10px;
     max-width: 800px; /* Limit the width of the content */
     width: 100%;
@@ -434,7 +434,16 @@ nav ul li a:hover {
 
 #sliderbutton {
     padding: 10px;
+    width: 25%; /* Make the button span the full width of the parent */
+    box-sizing: border-box; /* Ensure padding doesn't add extra width */
+    cursor: pointer; /* Change cursor to a hand on hover */
+    position: absolute; /* Position at the bottom of the parent */
+    bottom: 0; /* Align at the very bottom */
+    border: none; /* Remove border for a flat look */
+    text-align: center; /* Center text inside the button */
+    font-size: 16px; /* Adjust font size for better readability */
 }
+
 
 
 #slidercontent {
