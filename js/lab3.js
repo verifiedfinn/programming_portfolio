@@ -110,5 +110,3 @@ $(document).ready(function () {
         $("#slidercontent").slideToggle("fast");
     });
 });
-
-
