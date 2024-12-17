@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     const feedback = document.createElement("div");
     feedback.id = "formFeedback";
-    form.appendChild(feedback);
+    form.appendChild(feedback); // notification basically to say if it sent or not 
 
     // Handle form submission
     form.addEventListener("submit", function (e) {
