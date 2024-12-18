@@ -480,6 +480,34 @@ nav ul li a:hover {
     border: 1px solid red;
 }
 
+/*filter buttons */
+
+.filter-btn {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #000000;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Add hover effect to filter buttons */
+.filter-btn:hover {
+    background-color: #00d9ff;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #00d9ff, 0 0 100px #00d9ff;
+}
+
+/* Active state for filter buttons */
+.filter-btn.active {
+    background-color: #02bbdc;
+    color: white;
+}
+
 
 
 /* Responsive Media Queries */
