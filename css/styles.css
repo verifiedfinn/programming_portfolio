@@ -130,11 +130,12 @@ nav ul li a:hover {
     margin: 10px 0;
 }
 
-/* Gaming Skills Portfolio/button centering and text */
+/* Gaming Skills Portfolio/button centering and text for the SKINS */
 .game_types {
     background-color: #222;
     border: 2px solid #00d9ff;
-    padding: 40px;
+    padding: 10px;
+    padding-bottom: 80px;
     border-radius: 20px;
     width: calc(50% - 40px);
     transition: transform 0.5s ease-in-out, box-shadow 0.4s;
@@ -148,6 +149,26 @@ nav ul li a:hover {
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+#portfolio-page .game_types {
+    width: 300px; /* Set a fixed width */
+    height: 400px; /* Set a fixed height */
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+.game-image {
+    width: 100%;
+    height: 200px; /* Adjust based on desired image height */
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    border-radius: 8px;
 }
 
 /* Skins grid to make it look better */
@@ -482,19 +503,31 @@ nav ul li a:hover {
 
 /*filter buttons */
 
+/* Category Button Container */
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between buttons */
+    justify-content: center; /* Center align the buttons */
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Category Buttons */
 .filter-btn {
     color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 20px; /* Adjust padding for better spacing */
     background-color: #000000;
     border-radius: 5px;
     transition: 0.3s;
     box-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff;
     display: inline-block;
     cursor: pointer;
+    font-size: 0.9rem; /* Adjust text size for consistency */
 }
 
-/* Add hover effect to filter buttons */
+/* Hover Effect for Category Buttons */
 .filter-btn:hover {
     background-color: #00d9ff;
     color: #000;
@@ -502,7 +535,7 @@ nav ul li a:hover {
     box-shadow: 0 0 50px #00d9ff, 0 0 100px #00d9ff;
 }
 
-/* Active state for filter buttons */
+/* Active State for Category Buttons */
 .filter-btn.active {
     background-color: #02bbdc;
     color: white;
@@ -520,7 +553,7 @@ nav ul li a:hover {
 }
 
 #portfolio-page .game_types {
-    flex: 0 1 300px;
+    flex: 0 1 300px; /* Fixed width for consistent sizing */
     box-sizing: border-box;
     background-color: #222;
     padding: 15px;
@@ -530,6 +563,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start; /* Ensure content aligns from the top */
     transition: height 0.3s ease-in-out;
     overflow: hidden;
 }
@@ -540,21 +574,21 @@ nav ul li a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 2; /* Show only 2 lines before truncating */
     -webkit-box-orient: vertical;
     word-wrap: break-word;
 }
 
 #portfolio-page .more-content {
-    display: none;
+    display: none; /* Initially hidden */
     margin-top: 10px;
 }
 
 #portfolio-page .game-image {
     width: 100%;
     height: auto;
-    max-height: 150px;
-    object-fit: contain;
+    max-height: 150px; /* Limit the image height */
+    object-fit: contain; /* Ensure images maintain their aspect ratio */
     border-radius: 5px;
     margin-top: 10px;
 }
@@ -571,6 +605,7 @@ nav ul li a:hover {
     box-shadow: 0 0 5px #00d9ff, 0 0 10px #00d9ff;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    margin-top: 10px; /* Add spacing between elements */
 }
 
 #portfolio-page .button-link:hover {
@@ -583,46 +618,51 @@ nav ul li a:hover {
 #portfolio-page .steam-link:hover {
     background-color: #0099cc;
     color: #fff;
-    transform: none;
+    transform: none; /* Prevent scaling for specific links */
     box-shadow: none;
 }
 
-
-
-/* Responsive Media Queries */
-@media screen and (max-width: 1200px) {
-    .about-me {
-        flex-direction: column;
-        text-align: center;
-    }
-    #profile-pic {
-        margin: 0 auto;
-    }
-}
-
+/* Responsive Adjustments */
 @media screen and (max-width: 768px) {
-    nav ul {
+    #portfolio-page #game-container {
         flex-direction: column;
+        align-items: center;
     }
-    nav ul li {
-        margin-bottom: 10px;
-    }
-    #contact-form {
-        padding: 15px;
+
+    #portfolio-page .game_types {
+        flex: 0 1 90%; /* Take up 90% of the container's width */
+        max-width: 400px; /* Limit maximum size for smaller screens */
     }
 }
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
+    #portfolio-page .game_types {
+        flex: 0 1 100%; /* Take up full width on very small screens */
     }
-    .about-me {
-        padding: 10px;
-    }
-    nav ul li a {
-        padding: 8px 10px;
-        font-size: 0.9rem;
+
+    #portfolio-page .button-link {
+        width: 100%; /* Make buttons full-width */
+        text-align: center;
     }
 }
 
+
+/* Responsive Adjustments for Buttons/Responsive Media Queries */
+@media screen and (max-width: 768px) {
+    #filters {
+        flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
+    }
+    .filter-btn {
+        flex: 0 1 auto; /* Allow buttons to resize naturally */
+        font-size: 0.8rem; /* Adjust font size for smaller screens */
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .filter-btn {
+        width: 100%; /* Stack buttons for very small screens */
+        text-align: center;
+    }
+}
 
