@@ -508,6 +508,85 @@ nav ul li a:hover {
     color: white;
 }
 
+/* The container itself to fix the display look of the games and display correctly SEPERATE AS TO NOT INTERFERE WITH OTHER PAGES*/
+
+/* Scoped for the Gaming Portfolio page */
+#portfolio-page #game-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+#portfolio-page .game_types {
+    flex: 0 1 300px;
+    box-sizing: border-box;
+    background-color: #222;
+    padding: 15px;
+    border: 2px solid #00d9ff;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#portfolio-page .short-description {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+#portfolio-page .more-content {
+    display: none;
+    margin-top: 10px;
+}
+
+#portfolio-page .game-image {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#portfolio-page .button-link {
+    display: inline-block;
+    background: linear-gradient(to right, #04cdf0, #000000);
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #00d9ff;
+    box-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#portfolio-page .button-link:hover {
+    background-color: #00d9ff;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #00d9ff, 0 0 100px #00d9ff;
+}
+
+#portfolio-page .steam-link:hover {
+    background-color: #0099cc;
+    color: #fff;
+    transform: none;
+    box-shadow: none;
+}
+
 
 
 /* Responsive Media Queries */
