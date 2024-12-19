@@ -1,120 +1,92 @@
 $(document).ready(function () {
-    let data; // Store JSON data
+    let data = []; // Store JSON data
     let currentIndex = 0; // Track the current slide
-    let autoFadeInterval; // Store the interval for auto-fading
 
     // Load JSON data
     $.ajax({
         url: "data/favskins.json", // Path to your JSON file
         success: function (response) {
-            data = response;
-            console.log("JSON Data Loaded:", data); // Debug
-            initialise(data); // Initialize carousel once data is loaded
+            data = response; // Assign response to data
+            console.log("JSON Data Loaded:", data); // Debugging
+            initializeCarousel(); // Set up the carousel
+            populateDropdown(); // Populate dropdown content
         },
         error: function () {
             console.error("Failed to load JSON data.");
         }
     });
 
-    // Initialize carousel
-    function initialise(data) {
-        if (data && data.length > 0) {
-            updateContent(data); // Show the first slide
-            startAutoFade(data); // Start auto-fading
+    // Initialize the carousel
+    function initializeCarousel() {
+        if (data.length > 0) {
+            updateCarousel(); // Display the first item
         } else {
-            console.error("No data found in JSON.");
+            console.error("No data available.");
         }
     }
 
-    // Update carousel content with fade animation
-    function updateContent(data) {
-        const project = data[currentIndex]; // Get the current project
+    // Update the carousel with the current item
+    function updateCarousel() {
+        const item = data[currentIndex]; // Get the current item
         const displayContainer = $("#image-display");
-        const existingContent = displayContainer.find(".carousel-item");
 
-        if (existingContent.length > 0) {
-            existingContent.fadeOut(300, function () {
-                displayContainer.empty();
-                appendNewContent(project, displayContainer);
-                displayContainer.children().hide().fadeIn(300);
-            });
-        } else {
-            appendNewContent(project, displayContainer);
-            displayContainer.children().hide().fadeIn(300);
-        }
-    }
-
-    // Function to append new content to the display container
-    function appendNewContent(project, displayContainer) {
-        const contentHTML = `
-            <div class="carousel-item">
-                <h2><a href="${project.url}" target="_blank">${project.title}</a></h2>
-                <ul>
-                    ${project.description.map((item) => `<li>${item}</li>`).join("")}
-                </ul>
-                <div class="project_image_container">
-                    <img src="${project.images.src}" alt="${project.images.alt}" class="skin_image">
+        displayContainer.fadeOut(300, function () {
+            displayContainer.empty(); // Clear existing content
+            const carouselContent = `
+                <div>
+                    <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+                    <ul>
+                        ${item.description.map(desc => `<li>${desc}</li>`).join("")}
+                    </ul>
+                    <img src="${item.images.src}" alt="${item.images.alt}" class="skin_image">
                 </div>
-            </div>
-        `;
-        displayContainer.append(contentHTML);
+            `;
+            displayContainer.append(carouselContent); // Add new content
+            displayContainer.fadeIn(300); // Fade in the new content
+        });
     }
 
-    // Start auto-fading
-    function startAutoFade(data) {
-        autoFadeInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % data.length;
-            updateContent(data);
-        }, 10000);
-    }
+    // Populate dropdown content dynamically
+    function populateDropdown() {
+        const dropdownContainer = $("#skins-list");
+        dropdownContainer.empty(); // Clear existing content
 
-    // Stop auto-fading
-    function stopAutoFade() {
-        clearInterval(autoFadeInterval);
-        console.log("Auto-fade stopped.");
+        data.forEach(item => {
+            const dropdownContent = `
+                <div class="skin-item">
+                    <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+                    <ul>
+                        ${item.description.map(desc => `<li>${desc}</li>`).join("")}
+                    </ul>
+                    <img src="${item.images.src}" alt="${item.images.alt}" class="skin_image">
+                </div>
+            `;
+            dropdownContainer.append(dropdownContent); // Add each item
+        });
     }
 
     // Next button functionality
     $("#next").on("click", function () {
-        stopAutoFade();
-        currentIndex = (currentIndex + 1) % data.length;
-        updateContent(data);
+        currentIndex = (currentIndex + 1) % data.length; // Cycle to the next item
+        updateCarousel();
     });
 
     // Previous button functionality
     $("#prev").on("click", function () {
-        stopAutoFade();
-        currentIndex = (currentIndex - 1 + data.length) % data.length;
-        updateContent(data);
+        currentIndex = (currentIndex - 1 + data.length) % data.length; // Cycle to the previous item
+        updateCarousel();
     });
 
-    // Unified hover and click effects for navigation buttons
-    $("#prev, #next").on({
-        mouseenter: function () {
-            $(this).css("background-color", "green");
-        },
-        mouseleave: function () {
-            $(this).css("background-color", "red");
-        },
-        click: function () {
-            $(this).css("background-color", "orange");
-        }
-    });
-
-    // Pre-render slider content to prevent lag
-    $("#slidercontent").hide(); // Start hidden but already rendered in the DOM
-
-    // Smooth dropdown functionality for the slider button
-    $("#sliderbutton").click(function () {
+    // Dropdown toggle functionality
+    $("#sliderbutton").on("click", function () {
         const content = $("#slidercontent");
-
-        // Prevent animation interruptions
-        content.stop(true, false);
+        content.stop(true, false); // Prevent animation conflicts
 
         if (content.is(":visible")) {
-            content.slideUp(400, "swing");
+            content.slideUp(400); // Collapse the dropdown
         } else {
-            content.slideDown(400, "swing", function () {
+            content.slideDown(400, function () {
+                // Smoothly scroll the page down to the dropdown
                 $("html, body").animate(
                     { scrollTop: content.offset().top },
                     400,
@@ -122,5 +94,17 @@ $(document).ready(function () {
                 );
             });
         }
+    });
+
+    // Start the dropdown closed
+    $("#slidercontent").hide(); // Ensure the dropdown starts in a closed state
+
+    // Search Functionality
+    $("#search-bar").on("input", function () {
+        const query = $(this).val().toLowerCase();
+        $("#skins-list > .skin-item").each(function () {
+            const title = $(this).find("h2").text().toLowerCase();
+            $(this).toggle(title.includes(query)); // Show or hide based on the query
+        });
     });
 });

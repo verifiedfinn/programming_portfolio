@@ -568,7 +568,7 @@ nav ul li a:hover {
     font-weight: bold;
     border-radius: 5px;
     border: 2px solid #00d9ff;
-    box-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff;
+    box-shadow: 0 0 5px #00d9ff, 0 0 10px #00d9ff;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
