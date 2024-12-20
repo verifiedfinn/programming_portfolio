@@ -757,3 +757,21 @@ nav ul li a:hover {
     }
 }
 
+/* Adjust title size specifically for the portfolio page on smaller screens */
+@media screen and (max-width: 768px) {
+    #portfolio-page #title span {
+        font-size: 1.4rem; /* Slightly reduce font size */
+    }
+
+    #portfolio-page #title {
+        display: inline-block;
+        white-space: nowrap; /* Prevent wrapping */
+    }
+}
+
+/* Further adjustments for very small screens (iPhones, etc.) */
+@media screen and (max-width: 480px) {
+    #portfolio-page #title span {
+        font-size: 1.8rem; /* Further reduce font size */
+    }
+}
