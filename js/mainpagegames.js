@@ -2,15 +2,64 @@ $(document).ready(function () {
     let gamesData = [];
     let currentFilter = "All";
     let favorites = JSON.parse(localStorage.getItem("favorites")) || []; // Load saved favorites
+    let sessionOrder = JSON.parse(sessionStorage.getItem("gameOrder")) || []; // Load game order from sessionStorage
 
     // Fetch JSON data
     $.getJSON("data/gameinfo.json", function (data) {
         gamesData = data.games;
-        console.log("Loaded games data:", gamesData); // Debugging
+
+        // Randomize order on first load if no session order exists
+        if (sessionOrder.length === 0) {
+            sessionOrder = shuffleArray(gamesData.map((game) => game.Name));
+            sessionStorage.setItem("gameOrder", JSON.stringify(sessionOrder));
+        }
+
+        // Reorder games based on session storage
+        gamesData = reorderGamesBySession(gamesData, sessionOrder);
+
         displayGames(); // Render all games initially
     }).fail(function () {
         console.error("Failed to load JSON data.");
     });
+
+    // Shuffle array (Fisher-Yates algorithm)
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Reorder games based on session order
+    function reorderGamesBySession(games, order) {
+        const orderedGames = [];
+        const gameMap = games.reduce((map, game) => {
+            map[game.Name] = game;
+            return map;
+        }, {});
+
+        // Add games in the saved order
+        order.forEach((gameName) => {
+            if (gameMap[gameName]) {
+                orderedGames.push(gameMap[gameName]);
+                delete gameMap[gameName]; // Remove from map once added
+            }
+        });
+
+        // Add any remaining games that weren't in the saved order
+        Object.values(gameMap).forEach((game) => {
+            orderedGames.push(game);
+        });
+
+        return orderedGames;
+    }
+
+    // Save current game order to sessionStorage
+    function saveGameOrder(games) {
+        const gameOrder = games.map((game) => game.Name);
+        sessionStorage.setItem("gameOrder", JSON.stringify(gameOrder));
+    }
 
     // Function to display games
     function displayGames(filter = "All", searchQuery = "", sortDirection = "none") {
@@ -35,6 +84,9 @@ $(document).ready(function () {
             gamesToDisplay = sortGames(gamesToDisplay, sortDirection);
         }
 
+        // Save the current order to sessionStorage
+        saveGameOrder(gamesToDisplay);
+
         gamesToDisplay.forEach((game) => container.append(renderGame(game)));
         attachHandlers(); // Attach handlers to dynamically added elements
     }
@@ -47,7 +99,7 @@ $(document).ready(function () {
         if (direction === "Z-A") {
             return games.sort((a, b) => b.Name.localeCompare(a.Name));
         }
-        return games.sort(() => Math.random() - 0.5);
+        return games; // Default to the current order if no sortDirection is applied
     }
 
     // Render a single game
@@ -91,19 +143,16 @@ $(document).ready(function () {
             const gameName = parentBox.data("name");
 
             if ($(this).hasClass("favorited")) {
-                // Remove from favorites
                 favorites = favorites.filter((favName) => favName !== gameName);
                 $(this).removeClass("favorited");
                 console.log(`Removed ${gameName} from favorites.`);
             } else {
-                // Add to favorites
                 favorites.push(gameName);
                 $(this).addClass("favorited");
                 console.log(`Added ${gameName} to favorites.`);
             }
 
-            // Save updated favorites to localStorage
-            localStorage.setItem("favorites", JSON.stringify(favorites));
+            localStorage.setItem("favorites", JSON.stringify(favorites)); // Save to localStorage
         });
     }
 
