@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="About Me">
-    <!-- Fav icon added as learned as important in programming -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>About Me</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/gsaptitleanimations.js"></script>
 </head>
-<!-- Title and info with nav bar -->
 <body>
     <header id="intro">
         <nav>
@@ -21,10 +21,11 @@
             </ul>
         </nav>
         <br>
-        <h1>About Me</h1>
+        <h1 id="title">
+            <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span><span> </span>
+            <span>M</span><span>e</span>
+        </h1>
     </header>
-
-    <!-- Standard about me adapted from my own bio page with button functionality taken from my wix site -->
 
     <div class="about-me">
         <div class="about-header">
@@ -40,7 +41,7 @@
                 <br>
             </div>
             <a href="https://www.finnhorgan.com/_files/ugd/b00180_ab2b1b6545be403292ad204848c36c69.pdf" class="download-cv-btn">Download CV</a>
+        </div>
     </div>
-    </div>    
 </body>
 </html>

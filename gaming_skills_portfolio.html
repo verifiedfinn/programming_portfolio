@@ -8,6 +8,7 @@
     <title>My Gaming Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/gsaptitleanimations.js"></script>
 </head>
 <body id="portfolio-page">
     <header id="intro">
@@ -20,8 +21,13 @@
             </ul>
         </nav>
         <br>
-        <h1>My Gaming Portfolio</h1>
-        <p>Listed below are a couple of games I hold dear to my heart and still play today!</p>
+            <h1 id="title">
+                <span>M</span><span>y</span><span> </span>
+                <span>G</span><span>a</span><span>m</span><span>i</span><span>n</span><span>g</span><span> </span>
+                <span>P</span><span>o</span><span>r</span><span>t</span><span>f</span><span>o</span><span>l</span><span>i</span><span>o</span>
+            </h1>
+            <p id="description">Listed below are a couple of games I hold dear to my heart and still play today!</p>
+                                  
     </header>
     <br><br>
 
@@ -67,6 +73,7 @@
     </footer>
 
     <script src="js/mainpagegames.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </body>
 </html>
 
