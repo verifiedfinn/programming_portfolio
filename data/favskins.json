@@ -63,6 +63,58 @@
         "src": "images/howl.png",
         "alt": "M4A4 Howl Picture"
       }
+    },
+    {
+      "title": "Incinerator : GW2",
+      "url": "https://wiki.guildwars2.com/wiki/Incinerator",
+      "description": [
+        "My love for fire encapsuled in an amazing dagger",
+        "Favorite Legendary in Guild Wars 2 by far",
+        "Has an awesome molten footstep effect"
+      ],
+      "images": {
+        "src": "images/incinerator.jpg",
+        "alt": "Incinerator Picture"
+      }
+    },
+    {
+      "title": "Deathly Shoulderpads : GW2",
+      "url": "https://wiki.guildwars2.com/wiki/Deathly_Shoulderpads_Skin",
+      "description": [
+        "Amazing shoulder skin for a theif class",
+        "Goes well with anything and can be dyed",
+        "Rare and looks quite cool"
+      ],
+      "images": {
+        "src": "images/deathlyshoulder.jpg",
+        "alt": "Deathly Shoulder Picture"
+      }
+    },
+    {
+      "title": "Assasins armor : GW2",
+      "url": "https://wiki.guildwars2.com/wiki/Assassin%27s_armor",
+      "description": [
+        "Fantastic design for male and female rogues",
+        "Can be customized and dyed as individual parts",
+        "So good looking"
+      ],
+      "images": {
+        "src": "images/assasinsarmor.jpg",
+        "alt": "Assasins armor Picture"
+      }
+    },
+    {
+      "title": "Wreath of Cooperation : GW2",
+      "url": "https://wiki.guildwars2.com/wiki/Wreath_of_Cooperation_Skin",
+      "description": [
+        "Luxurious look and minimalistic headpiece",
+        "Royalty hat without being too much",
+        "Incredibly clean and dyeable"
+      ],
+      "images": {
+        "src": "images/wreathofcooperation.jpg",
+        "alt": "Wreath of Cooperation Picture"
+      }
     }
   ]
   
