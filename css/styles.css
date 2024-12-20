@@ -4,13 +4,14 @@
     padding: 0;
 }
 
-/* Styling for the general body of my main page and all pages using body */
+/* Body and Main Styling */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #111;
     color: #00d9ff;
     line-height: 1.6;
     overflow-x: hidden;
+    margin: 0;
 }
 
 /* Heading alignment and shadow glow */
@@ -290,21 +291,6 @@ section {
     /*^ changes the cursor when hovering over the buttons to show they are interactable*/
 }
 
-/* Body and Main Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #111;
-    color: #00d9ff;
-    line-height: 1.6;
-    overflow-x: hidden;
-    margin: 0;
-}
-
-/* Heading Styling */
-h1, h2 {
-    text-align: center;
-    text-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff, 0 0 60px #00d9ff;
-}
 
 nav ul li a {
     color: #fff;
@@ -622,6 +608,14 @@ nav ul li a:hover {
     box-shadow: none;
 }
 
+/* Added to make sure alignment for buttons stays the same when no steam click button */
+.placeholder-link {
+    display: block;
+    height: 50px; /* Match the height of the Steam link button */
+    margin: 10px 0; /* Same margin as the button */
+}
+
+
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
     #portfolio-page #game-container {
@@ -665,4 +659,66 @@ nav ul li a:hover {
         text-align: center;
     }
 }
+
+/* Media Query for Smaller Screens */
+@media screen and (max-width: 768px) {
+    /* Stack navigation links vertically */
+    nav ul {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        width: 100%; /* Make the links span the full width */
+        text-align: center; /* Center the text */
+    }
+}
+
+/* Media Query for Very Small Screens (Optional) */
+@media screen and (max-width: 480px) {
+    nav ul {
+        width: 100%; /* Ensure nav container spans full width */
+    }
+
+    nav ul li a {
+        font-size: 0.9rem; /* Adjust font size for readability */
+        padding: 8px 10px; /* Reduce padding for compact layout */
+    }
+}
+
+/* For Tablets and Phones (screens 768px and below) */
+@media (max-width: 768px) {
+    #carousel-container {
+        display: none; /* Hide the carousel container */
+    }
+
+    #slidercontent {
+        display: block !important; /* Ensure the list of skins is always visible */
+        width: 90%; /* Adjust the width for smaller screens */
+        margin: 10px auto; /* Center the content */
+    }
+
+    .skin-item h2 {
+        font-size: 1.2rem; /* Reduce heading size */
+    }
+
+    .skin_image {
+        width: 100%; /* Adjust images to fit the screen */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 10px; /* Consistent styling */
+    }
+
+    #skins-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* Add spacing between items */
+        justify-content: center; /* Center-align items */
+    }
+
+    h1, h2 {
+        font-size: 1.5rem; /* Reduce heading size */
+    }
+}
+
 

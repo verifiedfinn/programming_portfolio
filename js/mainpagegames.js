@@ -12,9 +12,10 @@ $(document).ready(function () {
 
     // Function to display games
     function displayGames(filter = "All", searchQuery = "", sortDirection = "none") {
-        $("#game-container").empty(); // Clear container
+        const container = $("#game-container");
+        container.empty();
 
-        let gamesToDisplay = [...gamesData]; // Create a copy of the games array
+        let gamesToDisplay = [...gamesData];
 
         // Apply filtering
         if (filter !== "All") {
@@ -29,67 +30,78 @@ $(document).ready(function () {
         }
 
         // Apply sorting
-        if (sortDirection === "A-Z") {
-            gamesToDisplay.sort((a, b) => a.Name.localeCompare(b.Name));
-        } else if (sortDirection === "Z-A") {
-            gamesToDisplay.sort((a, b) => b.Name.localeCompare(a.Name));
-        } else if (filter === "All") {
-            // Shuffle for random order if no sortDirection is applied
-            gamesToDisplay.sort(() => Math.random() - 0.5);
+        gamesToDisplay = sortGames(gamesToDisplay, sortDirection);
+
+        // Render games
+        gamesToDisplay.forEach(game => container.append(renderGame(game)));
+
+        // Attach read more functionality
+        attachReadMoreHandlers();
+    }
+
+    // Sorting logic
+    function sortGames(games, direction) {
+        if (direction === "A-Z") {
+            return games.sort((a, b) => a.Name.localeCompare(b.Name));
         }
+        if (direction === "Z-A") {
+            return games.sort((a, b) => b.Name.localeCompare(a.Name));
+        }
+        return games.sort(() => Math.random() - 0.5); // Random order for "All"
+    }
 
-        // Render each game box
-        gamesToDisplay.forEach(game => {
-            $("#game-container").append(`
-                <div class="game_types">
-                    <h2>${game.Name}</h2>
-                    <a href="${game.Link}" class="button-link steam-link" target="_blank">Click to view on Steam</a>
-                    <p class="short-description">${game.FirstSentence}</p>
-                    <div class="more-content" style="display: none;">
-                        <p>${game.RemainingDescription}</p>
-                    </div>
-                    <img src="${game.Image}" alt="${game.Name}" class="game-image">
-                    <button class="button-link read-more-btn">Read More</button>
+    // Render a single game
+    function renderGame(game) {
+        const steamLink = game.Link
+            ? `<a href="${game.Link}" class="button-link steam-link" target="_blank">Click to view on Steam</a>`
+            : `<div class="placeholder-link"></div>`;
+
+        return `
+            <div class="game_types">
+                <h2>${game.Name}</h2>
+                ${steamLink}
+                <p class="short-description">${game.FirstSentence}</p>
+                <div class="more-content" style="display: none;">
+                    <p>${game.RemainingDescription}</p>
                 </div>
-            `);
-        });
+                <img src="${game.Image}" alt="${game.Name}" class="game-image">
+                <button class="button-link read-more-btn">Read More</button>
+            </div>
+        `;
+    }
 
-        // Toggle functionality for "Read More"
+    // Attach read more functionality
+    function attachReadMoreHandlers() {
         $(".read-more-btn").on("click", function (event) {
-            event.stopPropagation(); // Prevent interference with other elements
+            event.stopPropagation();
             const moreContent = $(this).siblings(".more-content");
-            const parentBox = $(this).closest(".game_types"); // Get the parent box
+            const parentBox = $(this).closest(".game_types");
 
             if (moreContent.is(":visible")) {
-                // Collapse text
-                moreContent.slideUp(300, function () {
-                    parentBox.css("height", "auto"); // Reset box height
-                });
+                moreContent.slideUp(300, () => parentBox.css("height", "auto"));
                 $(this).text("Read More");
             } else {
-                // Expand text
-                parentBox.css("height", "auto"); // Let CSS handle the height transition
+                parentBox.css("height", "auto");
                 moreContent.slideDown(300);
                 $(this).text("Read Less");
             }
         });
     }
 
-    // Handle filter button clicks
+    // Filter button clicks
     $("#filters").on("click", ".filter-btn", function () {
         $(".filter-btn").removeClass("active");
         $(this).addClass("active");
         currentFilter = $(this).data("tag");
-        displayGames(currentFilter);
+        displayGames(currentFilter, $("#search-bar").val());
     });
 
-    // Handle search input
+    // Search input
     $("#search-bar").on("input", function () {
-        const searchQuery = $(this).val();
-        displayGames(currentFilter, searchQuery);
+        displayGames(currentFilter, $(this).val());
     });
 
-    // Handle sort buttons
+    // Sort buttons
     $("#sort-a-z").on("click", function () {
         displayGames(currentFilter, $("#search-bar").val(), "A-Z");
     });

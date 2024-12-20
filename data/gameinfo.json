@@ -51,8 +51,8 @@
         {
             "Name": "SpeedRunners",
             "Tags": ["Competitive"],
-            "FirstSentence": "<em>SpeedRunners</em> is a really fast paced swinging game with strategy hidden inside",
-            "RemainingDescription": "Used to play this all the time in undergrad trying to get faster. Felt really cool to get good at this game!",
+            "FirstSentence": "<em>SpeedRunners</em> is a really fast paced swinging game",
+            "RemainingDescription": "With strategy hidden inside. Used to play this all the time in undergrad trying to get faster. Felt really cool to get good at this game!",
             "Image": "images/speedrunnerspic.jpg",
             "Link": "https://store.steampowered.com/app/207140/SpeedRunners/"
         },
@@ -153,7 +153,7 @@
             "Link": "https://store.steampowered.com/app/1714040/Super_Auto_Pets/"
         },
         {
-            "Name": "Age of Empires II: Definitive Edition",
+            "Name": "Age of Empires II",
             "Tags": ["Strategy","Competitive"],
             "FirstSentence": "Classic city builder",
             "RemainingDescription": "<em>Age of Empires II: Definitive Edition</em>. A beautifully remastered strategy classic that I loved playing to scratch the strategy build itch!",
@@ -389,72 +389,63 @@
             "Tags": ["Casual"],
             "FirstSentence": "Literally my first game ever. Love it.",
             "RemainingDescription": "Embark on a nostalgic journey with <em>Super Mario Bros. 3</em>. A timeless platformer that defined an era of gaming.",
-            "Image": "images/supermariobros3pic.jpg",
-            "Link": "https://www.nintendo.com/store/products/super-mario-bros-3/"
+            "Image": "images/supermariobros3pic.jpg"
         },
         {
             "Name": "Super Mario Galaxy",
             "Tags": ["Casual"],
             "FirstSentence": "Reignited the love for galaxy, stars, and great stories",
             "RemainingDescription": "Travel across stunning planets in <em>Super Mario Galaxy</em>. A revolutionary platformer that brings gravity-defying gameplay to life.",
-            "Image": "images/supermariogalaxypic.jpg",
-            "Link": "https://www.nintendo.com/store/products/super-mario-galaxy/"
+            "Image": "images/supermariogalaxypic.jpg"
         },
         {
             "Name": "New Super Mario Bros. Wii",
             "Tags": ["Casual"],
             "FirstSentence": "Just a well-done mario game with great music",
             "RemainingDescription": "Jump into the classic Mario experience in <em>New Super Mario Bros. Wii</em>. A fun-filled platformer for friends and family.",
-            "Image": "images/newsupermariobroswiipic.jpg",
-            "Link": "https://www.nintendo.com/store/products/new-super-mario-bros-wii/"
+            "Image": "images/newsupermariobroswiipic.jpg"
         },
         {
             "Name": "Mario Kart Wii",
             "Tags": ["Social", "Sports", "Competitive"],
             "FirstSentence": "Amazing game with untold mechanics",
             "RemainingDescription": "Rev your engines in <em>Mario Kart Wii</em>. A thrilling racing game with classic tracks, wacky power-ups, and endless fun.",
-            "Image": "images/mariokartwiipic.jpg",
-            "Link": "https://www.nintendo.com/store/products/mario-kart-wii/"
+            "Image": "images/mariokartwiipic.jpg"
         },
         {
             "Name": "Super Smash Bros. Brawl",
             "Tags": ["Social", "Competitive", "Strategy"],
             "FirstSentence": "A classic for house parties",
             "RemainingDescription": "Battle iconic characters in <em>Super Smash Bros. Brawl</em>. A beloved fighting game with intense multiplayer action.",
-            "Image": "images/supersmashbrosbrawlpic.jpg",
-            "Link": "https://www.nintendo.com/store/products/super-smash-bros-brawl/"
+            "Image": "images/supersmashbrosbrawlpic.jpg"
         },
         {
             "Name": "Wii Sports Resort",
             "Tags": ["Sports", "Competitive"],
             "FirstSentence": "Who doesn't like Wii Bowiling?",
             "RemainingDescription": "Experience a variety of exciting sports in <em>Wii Sports Resort</em>. A motion-controlled game that delivers family fun.",
-            "Image": "images/wiisportsresortpic.jpg",
-            "Link": "https://www.nintendo.com/store/products/wii-sports-resort/"
+            "Image": "images/wiisportsresortpic.jpg"
         },
         {
             "Name": "Club Penguin",
             "Tags": ["Social"],
             "FirstSentence": "One of the best Candian games out there",
             "RemainingDescription": "<em>Club Penguin</em> was an iconic social multiplayer game. Customize your penguin, decorate igloos, and play games in a vibrant world.",
-            "Image": "images/clubpenguinpic.jpg",
-            "Link": "https://www.clubpenguin.com/"
+            "Image": "images/clubpenguinpic.jpg"
         },
         {
             "Name": "Steel Sentinels",
             "Tags": ["Strategy", "Competitive"],
             "FirstSentence": "A forgotten flashgame that was just so good",
             "RemainingDescription": "<em>Steel Sentinels</em> is a tactical mech combat game. Command powerful mechs and dominate the battlefield in strategic multiplayer battles.",
-            "Image": "images/steelsentinelspic.jpg",
-            "Link": "https://example.com/steel-sentinels"
+            "Image": "images/steelsentinelspic.jpg"
         },
         {
             "Name": "Arcanists",
             "Tags": ["Strategy", "Competitive"],
             "FirstSentence": "Another amazing yet forgotten turn based flash game",
             "RemainingDescription": "Cast spells and strategize in <em>Arcanists</em>. A turn-based multiplayer game with magical battles and tactical depth.",
-            "Image": "images/arcanistspic.jpg",
-            "Link": "https://example.com/arcanists"
+            "Image": "images/arcanistspic.jpg"
         }
     ]
 }
