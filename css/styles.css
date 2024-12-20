@@ -627,6 +627,28 @@ nav ul li a:hover {
     margin: 10px 0; /* Same margin as the button */
 }
 
+/* Favorites settings */
+
+.favorite-btn {
+    background: linear-gradient(to right, #04cdf0, #000000);
+    color: #fff;
+    border: 2px solid #00d9ff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 5px #00d9ff, 0 0 10px #00d9ff;
+}
+
+.favorite-btn.favorited {
+    background: linear-gradient(to right, #0f0, #008000); /* Green gradient */
+    color: #fff; /* Keep text white for better contrast */
+    border: 2px solid #0f0;
+    box-shadow: 0 0 5px #0f0, 0 0 20px rgba(0, 255, 0, 0.568); /* Green glow */
+    transform: scale(1.1); /* Slight enlargement for emphasis */
+}
+
+
 
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
