@@ -101,13 +101,6 @@ nav ul li a:hover {
     gap: 20px;
 }
 
-/* Profile pic force sizing */
-#profile-pic {
-    width: 500px;
-    height: auto;
-    border-radius: 10px;
-}
-
 /* Seperate css for text width of section*/
 .about-text {
     max-width: 500px;
@@ -118,17 +111,17 @@ nav ul li a:hover {
 /* Buttons for cv download inspired by og portfolio */
 .download-cv-btn {
     background: linear-gradient(to right, #ffafbd, #ffc3a0);
-    width: 500px;
     max-width: 450px;
-    position: absolute;
     padding: 15px 30px;
     border: none;
     border-radius: 30px;
     font-size: 1.1rem;
     color: #fff;
     text-align: center;
-    margin: 0 auto;
+    margin: 20px auto; /* Centers the button and adds spacing above/below */
+    display: block; /* Ensures the button spans its row */
 }
+
 
 /* Different button link with similar attributes used as .game_types keeps hijacking centering format */
 
@@ -336,7 +329,7 @@ nav ul li a:hover {
 
 #profile-pic {
     flex: 1;
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     border-radius: 10px;
 }
@@ -773,5 +766,114 @@ nav ul li a:hover {
 @media screen and (max-width: 480px) {
     #portfolio-page #title span {
         font-size: 1.8rem; /* Further reduce font size */
+    }
+}
+
+/* Responsive Adjustments for About Me Page */
+@media screen and (max-width: 768px) {
+    /* Center navigation links vertically */
+    nav ul {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        width: 100%; /* Make the links span the full width */
+        text-align: center; /* Center-align text */
+        font-size: 0.9rem; /* Adjust font size */
+    }
+
+    /* Adjust the title on smaller screens */
+    #title span {
+        font-size: 1.5rem; /* Reduce the font size for About Me title */
+    }
+
+    /* Ensure the About Me container scales nicely */
+    .about-me {
+        padding: 20px; /* Add padding for better spacing */
+        text-align: center; /* Center-align all content */
+    }
+
+    /* About header adjustments */
+    .about-header h1 {
+        font-size: 1.8rem; /* Scale the main header */
+    }
+
+    .about-header h2 {
+        font-size: 1.2rem; /* Scale the subheader */
+    }
+
+    /* Adjust the profile picture for smaller screens */
+    #profile-pic {
+        max-width: 400px; /* Constrain size */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto 20px; /* Center with spacing below */
+        display: block; /* Ensure it's centered */
+    }
+
+    /* Adjust About Me text content */
+    .about-text p {
+        font-size: 0.9rem; /* Scale down the text */
+        line-height: 1.5; /* Adjust line spacing */
+        margin: 0 10px 20px; /* Add horizontal padding and space below */
+    }
+
+    /* Center and reposition the CV Download Button */
+    .download-cv-btn {
+        display: block; /* Ensure it spans its own row */
+        margin: 0 auto; /* Center it horizontally */
+        text-align: center; /* Align text within the button */
+        width: 250px; /* Keep size compact */
+        padding: 10px 15px; /* Adjust padding for better touchability */
+        background: linear-gradient(to right, #ff9a9e, #fad0c4); /* Stylish gradient */
+        color: #fff; /* Contrast text color */
+        border: none; /* Remove borders */
+        border-radius: 5px; /* Add rounded corners */
+        font-size: 1rem; /* Adjust font size */
+        cursor: pointer; /* Indicate interactivity */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+}
+
+/* Media Query for Very Small Screens (e.g., iPhone SE) */
+@media screen and (max-width: 480px) {
+    nav ul {
+        width: 100%; /* Ensure the nav container spans full width */
+    }
+
+    nav ul li a {
+        padding: 8px 10px; /* Reduce padding for compact layout */
+        font-size: 0.85rem; /* Scale font size further */
+    }
+
+    #title span {
+        font-size: 1.3rem; /* Further reduce title font size */
+    }
+
+    /* Adjust profile picture for very small screens */
+    #profile-pic {
+        max-width: 250px; /* Scale down the profile picture */
+    }
+
+    /* About header adjustments */
+    .about-header h1 {
+        font-size: 1.6rem; /* Further scale main header */
+    }
+
+    .about-header h2 {
+        font-size: 1rem; /* Further scale subheader */
+    }
+
+    /* Adjust About Me text content */
+    .about-text p {
+        font-size: 0.8rem; /* Further scale text size */
+    }
+
+    /* Center and reposition CV button for very small screens */
+    .download-cv-btn {
+        margin-top: 20px; /* Add margin above the button */
+        font-size: 0.9rem; /* Reduce font size */
+        padding: 8px 12px; /* Adjust padding */
     }
 }
